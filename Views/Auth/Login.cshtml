@@ -1,0 +1,46 @@
+﻿@model task_management_system.Models.ViewModels.Auth.LoginViewModel
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px; border-radius: 10px;">
+        
+        <h2 class="text-center mb-4 text-dark fw-bold">Login</h2>
+        
+        <!-- Hiển thị thông báo lỗi tổng quan từ Server nếu đăng nhập sai -->
+        <div asp-validation-summary="ModelOnly" class="text-dark small mb-3"></div>
+
+        <form asp-action="Login" method="post">
+            
+            <!-- Ô nhập Email -->
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="form-label fw-semibold">Email Address</label>
+                <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+     
+            <!-- Ô nhập Password -->
+            <div class="form-group mb-4">
+                <label asp-for="Password" class="form-label fw-semibold">Password</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+     
+            <!-- Nút Login full chiều rộng -->
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-dark btn-block py-2 fw-bold">
+                    Login
+                </button>
+            </div>
+
+            <!-- ĐĂNG KÝ -->
+            <div class="text-center mt-3">
+                <p class="text-muted small mb-0">
+                    Don't have an account? 
+                    <a asp-controller="Auth" asp-action="Register" class="text-dark fw-semibold text-decoration-none">
+                        Register here
+                    </a>
+                </p>
+            </div>
+
+        </form>
+    </div>
+</div>

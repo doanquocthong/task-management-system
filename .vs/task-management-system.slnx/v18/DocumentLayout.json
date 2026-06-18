@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\thong\\OneDrive\\M\u00E1y t\u00EDnh\\task-management-system\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CAAEB421-9E9E-B843-37D1-B9525D7CD42B}|task-management-system.csproj|c:\\users\\thong\\onedrive\\m\u00E1y t\u00EDnh\\task-management-system\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAAEB421-9E9E-B843-37D1-B9525D7CD42B}|task-management-system.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CAAEB421-9E9E-B843-37D1-B9525D7CD42B}|task-management-system.csproj|c:\\users\\thong\\onedrive\\m\u00E1y t\u00EDnh\\task-management-system\\controllers\\projecttaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAAEB421-9E9E-B843-37D1-B9525D7CD42B}|task-management-system.csproj|solutionrelative:controllers\\projecttaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CAAEB421-9E9E-B843-37D1-B9525D7CD42B}|task-management-system.csproj|c:\\users\\thong\\onedrive\\m\u00E1y t\u00EDnh\\task-management-system\\models\\entities\\projecttask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAAEB421-9E9E-B843-37D1-B9525D7CD42B}|task-management-system.csproj|solutionrelative:models\\entities\\projecttask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 612,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\thong\\OneDrive\\M\u00E1y t\u00EDnh\\task-management-system\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\thong\\OneDrive\\M\u00E1y t\u00EDnh\\task-management-system\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T07:22:57.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProjectTaskController.cs",
+              "DocumentMoniker": "C:\\Users\\thong\\OneDrive\\M\u00E1y t\u00EDnh\\task-management-system\\Controllers\\ProjectTaskController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProjectTaskController.cs",
+              "ToolTip": "C:\\Users\\thong\\OneDrive\\M\u00E1y t\u00EDnh\\task-management-system\\Controllers\\ProjectTaskController.cs",
+              "RelativeToolTip": "Controllers\\ProjectTaskController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T07:18:51.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProjectTask.cs",
+              "DocumentMoniker": "C:\\Users\\thong\\OneDrive\\M\u00E1y t\u00EDnh\\task-management-system\\Models\\Entities\\ProjectTask.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\ProjectTask.cs",
+              "ToolTip": "C:\\Users\\thong\\OneDrive\\M\u00E1y t\u00EDnh\\task-management-system\\Models\\Entities\\ProjectTask.cs",
+              "RelativeToolTip": "Models\\Entities\\ProjectTask.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-18T07:18:48.631Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

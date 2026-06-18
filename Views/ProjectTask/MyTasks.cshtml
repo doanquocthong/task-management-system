@@ -1,0 +1,95 @@
+﻿@model IEnumerable<task_management_system.Models.ViewModels.ProjectTask.ProjectTaskViewModel>
+@using task_management_system.Models.Enum
+
+<div class="container py-4">
+    <div class="mb-4">
+        <h2 class="fw-bold text-dark m-0">Công việc của tôi</h2>
+        <p class="text-muted small m-0">Theo dõi, tiếp nhận và cập nhật tiến độ công việc được giao.</p>
+    </div>
+
+    <div class="row g-3">
+        @if (!Model.Any())
+        {
+            <div class="col-12 text-center py-5">
+                <div class="text-muted mb-2"><i class="bi bi-inboxes fs-1"></i></div>
+                <p class="text-secondary">Tuyệt vời! Bạn hiện tại không có công việc nào cần xử lý.</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm rounded-3 bg-white position-relative">
+                        <div class="position-absolute top-0 start-0 bottom-0 rounded-start-3" style="width: 5px; background-color: @(item.Status == ProjectTaskStatus.Pending ? "#ffc107" : item.Status == ProjectTaskStatus.Accepted ? "#0dcaf0" : item.Status == ProjectTaskStatus.InProgress ? "#0d6efd" : item.Status == ProjectTaskStatus.Completed ? "#198754" : "#dc3545");"></div>
+
+                        <div class="card-body p-4 ps-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="fw-bold text-dark m-0 pe-2">@item.Title</h5>
+                                <span class="badge @(item.Status == ProjectTaskStatus.Pending ? "bg-warning text-dark" : item.Status == ProjectTaskStatus.Accepted ? "bg-info text-dark" : item.Status == ProjectTaskStatus.InProgress ? "bg-primary" : item.Status == ProjectTaskStatus.Completed ? "bg-success" : "bg-danger")">
+                                    @item.Status.ToString()
+                                </span>
+                            </div>
+
+                            <small class="text-muted d-block mb-2">
+                                <i class="bi bi-folder me-1"></i> Dự án: <span class="fw-medium text-secondary">@item.ProjectName</span> |
+                                <i class="bi bi-person me-1"></i> Giao bởi: <span class="fw-medium text-secondary">@item.CreatorName</span>
+                            </small>
+
+                            <p class="text-secondary small mb-3 text-truncate-3" style="min-height: 4.5rem;">
+                                @(string.IsNullOrEmpty(item.Description) ? "Không có nội dung mô tả chi tiết." : item.Description)
+                            </p>
+
+                            <div class="border-top pt-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
+                                <span class="text-danger small fw-medium">
+                                    <i class="bi bi-calendar-event me-1"></i> Hạn chót: @(item.DueDate.HasValue ? item.DueDate.Value.ToString("dd/MM/yyyy") : "Không giới hạn")
+                                </span>
+
+                                <div class="d-flex gap-2">
+                                    @if (item.Status == ProjectTaskStatus.Pending)
+                                    {
+                                        <form asp-action="UpdateMyTaskStatus" method="post" class="m-0">
+                                            <input type="hidden" name="taskId" value="@item.Id" />
+                                            <input type="hidden" name="status" value="@ProjectTaskStatus.Accepted" />
+                                            <button type="submit" class="btn btn-sm btn-outline-success rounded-2 px-3">Nhận việc</button>
+                                        </form>
+
+                                        <form asp-action="UpdateMyTaskStatus" method="post" class="m-0" onsubmit="return confirm('Bạn chắc chắn muốn từ chối công việc này?');">
+                                            <input type="hidden" name="taskId" value="@item.Id" />
+                                            <input type="hidden" name="status" value="@ProjectTaskStatus.Rejected" />
+                                            <button type="submit" class="btn btn-sm btn-outline-danger rounded-2 px-3">Từ chối</button>
+                                        </form>
+                                    }
+                                    else if (item.Status == ProjectTaskStatus.Accepted)
+                                    {
+                                        <form asp-action="UpdateMyTaskStatus" method="post" class="m-0">
+                                            <input type="hidden" name="taskId" value="@item.Id" />
+                                            <input type="hidden" name="status" value="@ProjectTaskStatus.InProgress" />
+                                            <button type="submit" class="btn btn-sm btn-primary rounded-2 px-3">Bắt đầu làm</button>
+                                        </form>
+                                    }
+                                    else if (item.Status == ProjectTaskStatus.InProgress)
+                                    {
+                                        <form asp-action="UpdateMyTaskStatus" method="post" class="m-0" onsubmit="return confirm('Xác nhận bạn đã hoàn thành công việc này để gửi báo cáo?');">
+                                            <input type="hidden" name="taskId" value="@item.Id" />
+                                            <input type="hidden" name="status" value="@ProjectTaskStatus.Completed" />
+                                            <button type="submit" class="btn btn-sm btn-success rounded-2 px-3">Báo cáo Hoàn thành</button>
+                                        </form>
+                                    }
+                                    else if (item.Status == ProjectTaskStatus.Completed)
+                                    {
+                                        <span class="text-success small"><i class="bi bi-check-circle-fill me-1"></i> Đã hoàn tất xử lý</span>
+                                    }
+                                    else if (item.Status == ProjectTaskStatus.Rejected)
+                                    {
+                                        <span class="text-danger small"><i class="bi bi-x-circle-fill me-1"></i> Bạn đã từ chối task này</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Controllers",
+    "\\Data",
+    "\\Models",
+    "\\Models\\Common",
+    "\\Models\\Entities",
+    "\\Models\\Enum",
+    "\\Models\\ViewModels",
+    "\\Views",
+    "\\Views\\Home"
+  ],
+  "SelectedNode": "\\task-management-system.slnx",
+  "PreviewInSolutionExplorer": false
+}

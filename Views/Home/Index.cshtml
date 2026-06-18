@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container py-5">
+    @* Đã đăng nhập *@
+    @if (User.Identity!.IsAuthenticated)
+    {
+        <div class="card border-0 shadow-sm rounded-3 p-4 p-md-5 bg-white mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="fw-bold text-dark mb-2" style="letter-spacing: -1px;">Xin chào trở lại!</h1>
+                    <p class="fs-5 text-secondary mb-0">
+                        Chào mừng bạn, <span class="fw-semibold text-dark">@User.Identity.Name</span>. Vai trò: <span class="badge bg-dark">@User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @* Khối chức năng cho MANAGER *@
+            @if (User.IsInRole("Manager"))
+            {
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm rounded-3 bg-white border-top border-dark border-3">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="text-dark mb-3">
+                                <i class="bi bi-folder-plus fs-2"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-2">Quản lý Dự án (Projects)</h5>
+                            <p class="text-secondary small flex-grow-1">Với quyền Manager, bạn có thể thiết lập các dự án mới, cập nhật tiến độ tổng quan và theo dõi phân phối tài nguyên công việc trong đội ngũ.</p>
+                            <div class="pt-3">
+                                <a asp-controller="Project" asp-action="Index" class="text-decoration-none link-dark small fw-semibold">
+                                    Quản lý dự án &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm rounded-3 bg-white border-top border-dark border-3">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="text-dark mb-3">
+                                <i class="bi bi-list-task fs-2"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-2">Phân công Công việc (Tasks)</h5>
+                            <p class="text-secondary small flex-grow-1">Tạo các đầu việc chi tiết, chỉ định thời hạn (Due Date) và trực tiếp giao việc cho các thành viên (Employee) thực hiện.</p>
+                            <div class="pt-3">
+                                <a asp-controller="ProjectTask" asp-action="Index" class="text-decoration-none link-dark small fw-semibold">
+                                    Giao việc mới &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @* Khối chức năng cho EMPLOYEE *@
+            @if (User.IsInRole("Employee"))
+            {
+                <div class="col-md-12">
+                    <div class="card border-0 shadow-sm rounded-3 bg-white border-top border-dark border-3">
+                        <div class="card-body p-4">
+                            <div class="text-success mb-3">
+                                <i class="bi bi-clipboard-check fs-2"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-2">Không gian làm việc của bạn</h5>
+                            <p class="text-secondary small">Xem danh sách các công việc đã được Manager phân công, cập nhật trạng thái tiến độ để báo cáo.</p>
+                            <div class="pt-2">
+                                <a asp-controller="ProjectTask" asp-action="MyTasks" class="btn btn-dark btn-sm rounded-2 fw-medium px-4">
+                                    Xem danh sách công việc được giao
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        @* Chưa đăng nhập *@
+        <div class="row align-items-center g-5 py-4">
+            <div class="col-lg-7 text-center text-lg-start">
+                <span class="text-uppercase text-secondary small fw-bold tracking-wider" style="font-size: 0.8rem; letter-spacing: 1px;">Internal Platform</span>
+                <h1 class="display-4 fw-bold lh-1 text-dark mt-2 mb-3" style="letter-spacing: -1px;">Task Management System</h1>
+                <p class="col-lg-10 fs-5 text-secondary lh-base">
+                    Hệ thống quản lý công việc và dự án nội bộ. Vui lòng xác thực tài khoản để theo dõi tiến độ công việc và cập nhật trạng thái các task được giao.
+                </p>
+            </div>
+
+            <div class="col-md-9 mx-auto col-lg-5">
+                <div class="card p-4 p-md-5 border-0 shadow-sm rounded-3 bg-white text-center">
+                    <div class="mb-3 text-dark">
+                        <i class="bi bi-shield-lock" style="font-size: 2.5rem;"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-1">Yêu cầu đăng nhập</h4>
+                    <p class="text-muted winter small mb-4">Bạn cần xác thực danh tính để vào hệ thống quản lý.</p>
+
+                    <div class="d-grid gap-2">
+                        <a asp-controller="Auth" asp-action="Login" class="btn btn-dark btn-sm py-2.5 rounded-2 fw-medium">
+                            Đăng nhập ngay
+                        </a>
+                        <a asp-controller="Auth" asp-action="Register" class="btn btn-light btn-sm py-2.5 rounded-2 border text-secondary">
+                            Tạo tài khoản mới
+                        </a>
+                    </div>
+                    <hr class="my-4 opacity-25">
+                    <small class="text-muted" style="font-size: 0.8rem;">Hỗ trợ kỹ thuật: <span class="fw-medium text-dark">support@aegona.com</span></small>
+                </div>
+            </div>
+        </div>
+    }
+</div>
